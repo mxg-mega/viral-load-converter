@@ -2,6 +2,9 @@
 
 A desktop application for calculating viral load values for HBV, HCV, and HIV tests. This tool helps medical professionals convert test results and calculate logarithmic values with customizable conversion constants.
 
+## Note:
+These mode calculations are directly calculations used at DNA Labs Limited Nigeria when registering viral load.
+
 ## Features
 
 - Calculate viral load values for:
@@ -83,4 +86,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Author
 
-(Muhammad Aliyu Abubakar)[https://github.com/mxg-mega]
+[Muhammad Aliyu Abubakar](https://github.com/mxg-mega)
