@@ -1,0 +1,51 @@
+# Ignore Python compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore virtual environments
+venv/
+env/
+.venv/
+
+# Ignore PyInstaller build and dist directories
+build/
+dist/
+
+# Ignore PyInstaller spec files
+*.spec
+
+# Ignore Inno Setup output
+Output/
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore local settings and secrets
+settings.json  # If you want to exclude the config file (optional)
+*.env
+*.local
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Ignore pytest cache
+.pytest_cache/
+
+# Ignore coverage reports
+.coverage
+htmlcov/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore PyInstaller cache
+*.manifest
+*.toc
