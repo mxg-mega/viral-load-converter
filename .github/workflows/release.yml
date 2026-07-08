@@ -35,6 +35,9 @@ jobs:
           pip install -r requirements.txt
           pip install pyinstaller==6.* pillow
 
+      - name: Generate Windows .ico
+        run: python tools/build_icon.py
+
       - name: Build with PyInstaller
         run: pyinstaller viral_load_calculator.spec --noconfirm --clean
 

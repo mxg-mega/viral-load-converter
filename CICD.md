@@ -139,7 +139,8 @@ and `<repo>` with `viral-load-converter`.
 Requires Python 3.11+ and Inno Setup Compiler.
 
 ```powershell
-python -m pip install -r requirements.txt pyinstaller
+python -m pip install -r requirements.txt pyinstaller pillow
+python tools/build_icon.py
 pyinstaller viral_load_calculator.spec --noconfirm --clean
 # Open Inno Setup Compiler GUI, load viral_load_calculator.iss, click Compile
 ```
@@ -244,6 +245,16 @@ Check the Actions tab for the workflow run. Common causes:
   because of repository settings (Settings → Actions → General → "Read
   and write permissions" must be enabled, or you must add the
   `GITHUB_TOKEN` permissions to the workflow).
+
+### Inno Setup fails with "Resource update error: Icon file is invalid"
+
+`viral_load_calculator.iss` references `resources\app_icon.ico`. Windows
+`.ico` files cannot be used directly — they must be generated from a
+source PNG. The Windows CI jobs run `python tools/build_icon.py` (which
+uses Pillow) before PyInstaller and Inno Setup, producing
+`resources/app_icon.ico` from `resources/app_icon.png` at multiple
+sizes (16, 32, 48, 64, 128, 256). If you see this error locally, install
+Pillow (`pip install pillow`) and run the script yourself.
 
 ### Inno Setup fails with "Could not find file: LICENSE"
 

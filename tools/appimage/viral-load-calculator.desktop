@@ -6,5 +6,5 @@ Comment=Convert viral load test results to IU/ml and log10 values
 Exec=ViralLoadCalculator %F
 Icon=viral-load-calculator
 Terminal=false
-Categories=Office;Medical;Health;
+Categories=Office;X-Medical;X-Health;
 StartupNotify=true

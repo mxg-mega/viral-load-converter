@@ -5,7 +5,7 @@
 #define MyAppVersion "1.0.0"
 #define MyAppPublisher "Phantom Pulse"
 #define MyAppExeName "ViralLoadCalculator.exe"
-#define MyAppIcon "resources\app_icon.png"
+#define MyAppIcon "resources\app_icon.ico"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
