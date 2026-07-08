@@ -48,7 +48,7 @@ jobs:
           fi
 
       - name: Compile Inno Setup installer
-        uses: Minionguyenpro/iscc-action@v1
+        uses: Minionguyenpro/iscc-action@master
         with:
           iss-file: viral_load_calculator.iss
 
