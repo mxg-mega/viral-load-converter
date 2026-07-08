@@ -48,9 +48,9 @@ jobs:
           fi
 
       - name: Compile Inno Setup installer
-        uses: Minionguyenpro/iscc-action@master
-        with:
-          iss-file: viral_load_calculator.iss
+        shell: cmd
+        run: |
+                "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" viral_load_calculator.iss
 
       - name: Verify installer
         shell: bash
