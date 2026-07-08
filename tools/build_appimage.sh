@@ -53,8 +53,13 @@ mkdir -p "${TOOLS_CACHE}"
 
 if [ ! -x "${APPIMAGETOOL}" ]; then
   echo "Downloading appimagetool (${APPIMAGETOOL_VERSION})..."
-  curl -fL --retry 3 -o "${APPIMAGETOOL}" \
+  # Try primary source first
+  if ! curl -fL --retry 3 -o "${APPIMAGETOOL}" \
+    "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage" 2>/dev/null; then
+    echo "Primary source failed, trying fallback..."
+    curl -fL --retry 3 -o "${APPIMAGETOOL}" \
     "https://github.com/AppImageCommunity/appimagetool/releases/download/${APPIMAGETOOL_VERSION}/appimagetool-x86_64.AppImage"
+  fi
   chmod +x "${APPIMAGETOOL}"
 fi
 
