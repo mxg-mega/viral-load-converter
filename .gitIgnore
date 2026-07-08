@@ -49,3 +49,14 @@ htmlcov/
 # Ignore PyInstaller cache
 *.manifest
 *.toc
+
+# Ignore AppImage staging and outputs
+AppDir/
+*.AppImage
+*.AppImage.zsync
+
+# Ignore Inno Setup installer output directory
+installer/
+
+# Ignore cached build tools (appimagetool download)
+tools/.cache/

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# AppRun - launcher for the Viral Load Calculator AppImage.
+# Resolves the AppDir regardless of FUSE mount, then execs the bundled binary.
+
+set -e
+
+APPDIR="$(dirname "$(readlink -f "$0")")"
+export PATH="${APPDIR}/usr:${APPDIR}/usr/_internal:${PATH}"
+export LD_LIBRARY_PATH="${APPDIR}/usr/_internal:${APPDIR}/usr:${LD_LIBRARY_PATH:-}"
+
+# PyInstaller one-dir layout: the launcher binary sits directly in usr/.
+if [ -x "${APPDIR}/usr/ViralLoadCalculator" ]; then
+  exec "${APPDIR}/usr/ViralLoadCalculator" "$@"
+fi
+
+# Fallback: some PyInstaller versions nest the binary in usr/_internal/.
+if [ -x "${APPDIR}/usr/_internal/ViralLoadCalculator" ]; then
+  exec "${APPDIR}/usr/_internal/ViralLoadCalculator" "$@"
+fi
+
+echo "ERROR: ViralLoadCalculator binary not found inside the AppImage." >&2
+exit 1

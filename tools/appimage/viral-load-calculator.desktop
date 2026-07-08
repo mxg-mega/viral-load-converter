@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Viral Load Calculator
+GenericName=Medical Calculator
+Comment=Convert viral load test results to IU/ml and log10 values
+Exec=ViralLoadCalculator %F
+Icon=viral-load-calculator
+Terminal=false
+Categories=Office;Medical;Health;
+StartupNotify=true

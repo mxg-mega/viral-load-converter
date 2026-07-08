@@ -5,7 +5,7 @@
 #define MyAppVersion "1.0.0"
 #define MyAppPublisher "Phantom Pulse"
 #define MyAppExeName "ViralLoadCalculator.exe"
-#define MyAppIcon "resources\app_icon..png"
+#define MyAppIcon "resources\app_icon.png"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -29,7 +29,7 @@ AllowNoIcons=yes
 ; Allow user to choose install location
 DisableDirPage=no
 ; Show license agreement
-LicenseFile=LICENSE.txt
+LicenseFile=LICENSE
 ; Show readme
 InfoBeforeFile=README.txt
 ; Windows versions
@@ -47,7 +47,7 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 Source: "dist\ViralLoadCalculator\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "dist\ViralLoadCalculator\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; Additional files
-Source: "LICENSE.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "LICENSE"; DestDir: "{app}"; Flags: ignoreversion
 Source: "README.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "resources\settings.json"; DestDir: "{app}\resources"; Flags: ignoreversion
 
