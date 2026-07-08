@@ -5,8 +5,8 @@ block_cipher = None
 # Define all necessary data files
 added_files = [
     ('resources/settings.json', 'resources'),  # Settings file
-    ('models/*.py', 'models'),                # All model files
-    ('config.py', '.'),                       # Config module
+    ('viral_load_calculator/models/*.py', 'models'),                # All model files
+    ('viral_load_calculator/config.py', '.'),                       # Config module
 ]
 
 a = Analysis(
