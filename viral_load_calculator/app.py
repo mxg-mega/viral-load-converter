@@ -17,7 +17,8 @@ from .models import HBVLModel, HCVLModel, HIVLModel
 class StyledFrame(QFrame):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setFrameShape(QFrame.StyledPanel)
+        # Use getattr to access StyledPanel to avoid static analysis issues
+        self.setFrameShape(getattr(QFrame, "StyledPanel", QFrame.Panel))
         self.setStyleSheet("""
             StyledFrame {
                 background-color: #f8f9fa;
@@ -138,12 +139,12 @@ class ResultsWidget(QFrame):
             }
         """)
 
-        self.layout = QVBoxLayout(self)
+        self.results_layout = QVBoxLayout(self)
         self.iu_label = QLabel("IU/ml: -")
         self.log_label = QLabel("Log10: -")
 
-        self.layout.addWidget(self.iu_label)
-        self.layout.addWidget(self.log_label)
+        self.results_layout.addWidget(self.iu_label)
+        self.results_layout.addWidget(self.log_label)
 
     def update_results(self, iu_per_ml, log_value):
         self.iu_label.setText(f"IU/ml: {iu_per_ml:.5f}")
@@ -275,7 +276,7 @@ class ViralLoadApp(QMainWindow):
 
             self.results_widget.update_results(iu_per_ml, log_value)
             if isinstance(model, BaseModel):
-                record_result(value=result, iu_ml=iu_per_ml, log=log_value, result_type=model.get_type(), results=self.results)
+                record_result(value=result, iu_ml=iu_per_ml, log=log_value, result_type=selected_type, results=self.results)
                 save_result_file(results=self.results)
                 
 
