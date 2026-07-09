@@ -1,3 +1,4 @@
+from datetime import datetime
 import sys
 
 from PySide6.QtWidgets import (
@@ -6,8 +7,10 @@ from PySide6.QtWidgets import (
     QDialog, QFormLayout, QFrame
 )
 from PySide6.QtCore import Qt
+from viral_load_calculator.models.base_model import BaseModel
+from viral_load_calculator.result_manager import fetch_result_file, record_result, save_result_file
 
-from .config import Config
+from .config import Config, get_user_data_dir_or_file
 from .models import HBVLModel, HCVLModel, HIVLModel
 
 
@@ -148,6 +151,9 @@ class ResultsWidget(QFrame):
 
 
 class ViralLoadApp(QMainWindow):
+    
+    results = fetch_result_file()
+    
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Viral Load Calculator")
@@ -268,6 +274,10 @@ class ViralLoadApp(QMainWindow):
             log_value = model.get_value_log()
 
             self.results_widget.update_results(iu_per_ml, log_value)
+            if isinstance(model, BaseModel):
+                record_result(value=result, iu_ml=iu_per_ml, log=log_value, result_type=model.get_type(), results=self.results)
+                save_result_file(results=self.results)
+                
 
         except (ValueError, TypeError) as e:
             QMessageBox.critical(self, "Error", str(e))

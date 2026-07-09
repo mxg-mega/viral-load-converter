@@ -10,6 +10,10 @@ class HBVLModel(BaseModel):
     def conversion_constant(self):
         return Config.get_constant("HBVL_CONSTANT")
     
+    @property
+    def get_type(self) -> str:
+        return 'HBVL'
+    
     @conversion_constant.setter
     def conversion_constant(self, value):
         # Validation

@@ -10,6 +10,10 @@ class HCVLModel(BaseModel):
     def conversion_constant(self):
         return Config.get_constant("HCVL_CONSTANT")
     
+    @property
+    def get_type(self) -> str:
+        return 'HCVL'
+    
     @conversion_constant.setter
     def conversion_constant(self, value):
         if not isinstance(value, float):

@@ -10,6 +10,10 @@ class HIVLModel(BaseModel):
     def conversion_constant(self):
         return Config.get_constant("HIVL_CONSTANT")
     
+    @property
+    def get_type(self) -> str:
+        return 'HIVL'
+    
     @conversion_constant.setter
     def conversion_constant(self, value):
         if not isinstance(value, float):

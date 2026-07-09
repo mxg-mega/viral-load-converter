@@ -29,11 +29,17 @@ def _get_user_config_dir():
     return os.path.join(xdg, "viral-load-calculator")
 
 
+def get_user_data_dir_or_file(file: str | None):
+    if file is not None:
+        return os.path.join(os.path.join(os.path.expanduser('~'), 'Desktop'), 'ViralLoadCalculator') + f'/{file}'
+    return os.path.join(os.path.join(os.path.expanduser('~'), 'Desktop'), 'ViralLoadCalculator')
+
+
 class Config:
     DEFAULTS = {
         "HBVL_CONSTANT": 0.167,
         "HCVL_CONSTANT": 0.57,
-        "HIVL_CONSTANT": 0.59
+        "HIVL_CONSTANT": 0.57
     }
 
     @classmethod

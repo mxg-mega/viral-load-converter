@@ -17,6 +17,10 @@ class BaseModel():
     def conversion_constant(self):
         # Force subclasses to implement this property
         raise NotImplementedError("Subclasses must implement `conversion_constant`")
+    
+    @property
+    def get_type(self) -> str:
+        raise NotImplementedError("Subclasses must implement `get_type`")
         
     def convert_to_IU_per_ml(self):
         conversion = self.result / self.conversion_constant
