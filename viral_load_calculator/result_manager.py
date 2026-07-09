@@ -25,7 +25,7 @@ def record_result(value: float, iu_ml: float, log: float,
         'iu/ml': iu_ml,
         'log': log,
         'result_type': result_type,
-        'created_at': datetime.datetime.now().strftime('%H:%M:%S'),
+        'created_at': datetime.datetime.now().strftime('%d/%m/%Y, %H:%M:%S'),
     }
     results.append(result)
     return result
