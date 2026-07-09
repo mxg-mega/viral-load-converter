@@ -45,9 +45,8 @@ class Config:
     @classmethod
     def _get_resource_path(cls, relative_path):
         """Get absolute path to bundled resource, works for dev and PyInstaller."""
-        try:
-            base_path = sys._MEIPASS
-        except Exception:
+        base_path = getattr(sys, "_MEIPASS", None)
+        if base_path is None:
             base_path = Path(__file__).resolve().parent.parent
         return os.path.join(base_path, relative_path)
 
